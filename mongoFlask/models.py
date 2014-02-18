@@ -3,7 +3,7 @@ from flask import url_for
 from mongoFlask import db
 
 
-class Post(db.Document):
+class Article(db.Document):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
     title = db.StringField(max_length=255, required=True)
     author = db.StringField(max_length=255, required=True)
