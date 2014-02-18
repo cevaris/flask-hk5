@@ -9,12 +9,22 @@ articles = Blueprint('articles', __name__, template_folder='templates')
 
 class Search(MethodView):
 
-  def get(self, query):
+  def get(self):
+    query = request.args.get('q', '')
+    count = int(request.args.get('n', 0))
+    print query
+    print count
+
     try:
       articles = Article.objects(body__contains=query)
     except Article.DoesNotExist:
       articles = []
-    return render_template('articles/index.html', articles=articles)
+
+    if count > 0:
+      return render_template('articles/index.html', articles=articles[:count])
+    else:
+      return render_template('articles/index.html', articles=articles)
+      
 
 class Index(MethodView):  
 
@@ -32,5 +42,5 @@ class ShowArticle(MethodView):
 
 
 articles.add_url_rule('/articles', view_func=Index.as_view('index'))
-articles.add_url_rule('/articles/search/<query>', view_func=Search.as_view('search'))
+articles.add_url_rule('/articles/search/', view_func=Search.as_view('search'))
 articles.add_url_rule('/articles/<slug>/', view_func=ShowArticle.as_view('show'))
