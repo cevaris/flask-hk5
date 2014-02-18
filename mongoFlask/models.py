@@ -6,6 +6,7 @@ from mongoFlask import db
 class Article(db.Document):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
     title = db.StringField(max_length=255, required=True)
+    slug = db.StringField(max_length=255, required=False)
     author = db.StringField(max_length=255, required=True)
     body = db.StringField(required=True)
 

@@ -11,4 +11,12 @@ class Index(MethodView):
     articles = Article.objects.all()
     return "Hello World"
 
-articles.add_url_rule('/', view_func=Index.as_view('show'))
+class ShowArticle(MethodView):
+
+  def get(self, slug):
+    article = Article.objects.get_or_404(slug=slug)
+    return render_template('articles/show.html', article=article)
+
+
+# articles.add_url_rule('/', view_func=Index.as_view())
+articles.add_url_rule('/articles/<slug>/', view_func=ShowArticle.as_view('show'))
