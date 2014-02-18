@@ -7,7 +7,6 @@ app.config["SECRET_KEY"] = "KeepThisS3cr3t"
 
 db = MongoEngine(app)
 
-
 def register_blueprints(app):
     # Prevents circular imports
     from mongoFlask.views import articles
@@ -17,5 +16,3 @@ register_blueprints(app)
 
 if __name__ == '__main__':
     app.run(port=3000)
-
-
