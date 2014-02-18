@@ -2,12 +2,12 @@
 
 {% block page_header %}
   <div class="page-header">
-    <h1>{{ article.title }}</h1>
+    <h1>Title: {{ article.title }}</h1>
   </div>
 {% endblock %}
 
 {% block content %}
-  <p>{{ article.author }}<p>
-  <p>{{ article.body }}<p>
-  <p>{{ article.created_at.strftime('%H:%M %Y-%m-%d') }}</p>
+  <p>Author: {{ article.author }}<p>
+  <p>Body: {{ article.body }}<p>
+  <p>Created: {{ article.created_at.strftime('%H:%M %Y-%m-%d') }}</p>
 {% endblock %}
