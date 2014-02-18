@@ -1,6 +1,6 @@
 import datetime
 from flask import url_for
-from tumblelog import db
+from mongoFlask import db
 
 
 class Post(db.Document):
@@ -15,9 +15,9 @@ class Post(db.Document):
     def __unicode__(self):
         return self.title
 
-    meta = {
-        'allow_inheritance': True,
-        'indexes': ['-created_at', 'slug'],
-        'ordering': ['-created_at']
-    }
+    # meta = {
+    #     'allow_inheritance': True,
+    #     'indexes': ['-created_at', 'slug'],
+    #     'ordering': ['-created_at']
+    # }
 
