@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for article in articles %}
+      <h2><a href="{{ url_for('articles.detail', slug=article.slug) }}">{{ article.title }}</a></h2>
+      <p>{{ article.body|truncate(100) }}</p>
+    {% endfor %}
+{% endblock %}

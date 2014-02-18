@@ -4,12 +4,10 @@ from mongoFlask.models import Article
 
 articles = Blueprint('articles', __name__, template_folder='templates')
 
-
 class Index(MethodView):
-
   def get(self):
     articles = Article.objects.all()
-    return "Hello World"
+    return render_template('articles/index.html', articles=articles)
 
 class ShowArticle(MethodView):
 
